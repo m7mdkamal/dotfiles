@@ -1,23 +1,96 @@
-! Enable the extended coloring options
-rofi.color-enabled: true
-!                  bg             border   separator
-rofi.color-window: #000000      , #a0100b,  #2274a5,
-!                  bg             fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: argb:00000000, #FFFFFF, 000000, 000000,   #c11b15
-rofi.color-active: argb:00000000, #FFFFFF, argb:00000000,   argb:00000000, #c11b15
-rofi.color-urgent: #2f343f, #2f343f, #2f343f, #2f343f, #2f343f
 
-rofi.separator-style: none
-rofi.sidebar-mode: true
-rofi.bw: 2
-rofi.columns: 1
-rofi.padding: 16
+! Base16 Helios
+! Scheme: Alex Meyer (https://github.com/reyemxela)
 
-rofi.yoffset: 0
-rofi.location: 0
-rofi.width: 600
-rofi.lines: 10
-rofi.fixed-num-lines: true
+#define base00 #111111
+#define base01 #303030
+#define base02 #353535
+#define base03 #4A4A4A
+#define base04 #B2CCD6
+#define base05 #FFFFFF
+#define base06 #EEFFFF
+#define base07 #FFFFFF
+#define base08 #F07178
+#define base09 #F78C6C
+#define base0A #FDF200
+#define base0B #13CA91
+#define base0C #00FECA
+#define base0D #7898FB
+#define base0E #FF2079
+#define base0F #FF5370
+
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15:      base07
+
+! === rofi ===
+
+rofi.modi:                           ssh,window,drun,run
+rofi.sidebar-mode:                   false
+rofi.terminal:                       urxvt
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
+rofi.opacity:                        10
+rofi.width:                          800
+rofi.lines:                          6
+rofi.columns:                        1
+rofi.font:                           Ubuntu Mono 16
+rofi.fg:                             #5294E2
+rofi.bg:                             #5d729f
+rofi.fg-active:                      #34405a
+rofi.fg-urgent:                      #34405a
+rofi.hlfg-active:                    #5e73a0
+rofi.hlfg-urgent:                    #5e73a0
+rofi.bg-active:                      #34405a
+rofi.bg-urgent:                      #34405a
+rofi.hlbg-active:                    #5d729f
+rofi.hlbg-urgent:                    #5d729f
+rofi.bgalt:                          #5671a0
+rofi.hlfg:                           #34405a
+rofi.hlbg:                           #34405a
+rofi.bc:                             #789ee1
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+! rofi.color-normal: #353944,  #FFFFFF,  #353944,  #5294E2,  #FFFFFF
+
+!                  'background', 'border'
+! rofi.color-window: #353944,      #404552
+rofi.bw:                             4
+rofi.location:                       0
+rofi.padding:                        0
+rofi.levenshtein-sort:               true
+rofi.case-sensitive:                 false
+rofi.fuzzy:                          true
+rofi.line-margin:                    0
+rofi.line-padding:                   12
+rofi.separator-style:                none
+rofi.hide-scrollbar:                 true
+rofi.markup-rows:                    false
+rofi.scrollbar-width: 8
+rofi.fullscreen: false
+rofi.show-icons: false
+
 
 ! urxvt 
 !! Colorscheme
@@ -60,14 +133,14 @@ rofi.fixed-num-lines: true
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.font: xft:Operator Mono Medium:size=10
-URxvt.boldFont: xft:Operator Mono Medium:size=10
-URxvt.italicFont: xft:Operator Mono Medium:size=10
-URxvt.boldItalicfont: xft:Operator Mono Medium:size=10
+URxvt.font: xft:Fira Code Medium:size=12
+URxvt.boldFont: xft:Fira Code Medium:size=12
+URxvt.italicFont: xft:Fira Code Medium:size=12
+URxvt.boldItalicfont: xft:Fira Code Medium:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
-URxvt.internalBorder: 12 
+URxvt.internalBorder: 14
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.saveline: 2048
