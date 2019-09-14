@@ -1,3 +1,3 @@
-# My dot files
+# My linux configurations
 
-![screenshot](images/screenshot.png?raw=true "screenshot")
+![screenshot](images/screenshot.png "screenshot")
