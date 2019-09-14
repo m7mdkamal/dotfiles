@@ -29,7 +29,7 @@ override-redirect = false
 ; FONTS ;
 ;-------;
 
-font-0 = SF Mono:size=8:weight=semibold;3
+font-0 = SF Mono:size=8:weight=bold;3
 ;font-0 = ProggyCleanTT:size=12;2
 font-1 = "icomoon\-feather:size=10;1"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;2"
@@ -50,11 +50,12 @@ border-color = 0
 fixed-center = true
 padding-left = 2
 padding-right = 2
-module-margin = 0
+module-margin-left = 2
+module-margin-right = 2
 
-modules-left = date time volume battery wlan network
+modules-left = date time volume battery wlan network kubernetes
 modules-center = 
-modules-right =  mpd spotify i3
+modules-right = xwindow
 
 tray-position = right
 tray-detached = false
@@ -94,7 +95,6 @@ format = <label>
 label = %time%
 format-margin  = 0
 format-spacing = 0
-format-padding = 2
 
 [module/date]
 type = internal/date
@@ -104,61 +104,44 @@ format = <label>
 label = %date%
 format-margin  = 0
 format-spacing = 0
-format-padding = 2
 
 [module/battery]
-type = internal/battery
-full-at = 99
-battery = BAT0
-adapter = ACAD
-poll-interval = 2
-time-format = %H:%M
-format-charging = bat char <label-charging>
-format-charging-padding = 2
-format-discharging = bat <label-discharging>
-format-discharging-padding = 2
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full = Fully Charged
+type = custom/script
+interval = 1.0
+exec = ~/bin/bat.sh
 
 [module/volume]
-type = internal/alsa
-format-volume = vol <label-volume>
-label-volume = %percentage%%
-format-muted-prefix = 
-label-muted = " Muted"
-ramp-headphones-0 = 
-ramp-headphones-1 = 
-format-volume-padding = 2
-format-muted-padding = 2
+type = custom/script
+interval = 0.01
+exec = ~/bin/vol.sh -q
+scroll-up = ~/bin/vol.sh -i
+scroll-down = ~/bin/vol.sh -d
 
 [module/wlan]
 type = internal/network
 interface = wlp3s0
 interval = 5
-label-connected = WIFI %essid%
-label-disconnected = WIFI Not Connected
-format-connected-background = ${xrdb:color4}
-format-connected-foreground = ${xrdb:color15}
-format-connected-padding = 2
-format-disconnected-padding = 2
+label-connected = %{F#4A4A4A}wifi%{F#111111} %essid%
+label-disconnected = %{F#4A4A4A}wifi%{F#111111} not connected
+;format-connected-background = ${xrdb:color4}
+;format-connected-foreground = ${xrdb:color15}
 
 [module/network]
 type = internal/network
 interface = wlp3s0
-label-connected = dwn %downspeed% | up %upspeed%
-format-connected-padding = 2
+label-connected = %{F#4A4A4A}dwn%{F#111111} %downspeed% %{F#4A4A4A} up %{F#111111}%upspeed%
 
 [module/spotify]
 type = custom/script
-interval = 1
-format-prefix =
-format = <label>
-exec = python ~/.config/polybar/spotify/script -f '{play_pause} {song} - {artist}'
-format-underline = #1db954
-format-background = ${xrdb:color4}
-format-foreground = ${xrdb:color15}
-format-padding = 2
+exec =  ~/bin/spotify.py
+exec-if = pgrep spotify > /dev/null
+interval = 0.01
+click-left = playerctl -p spotify play-pause
+
+[module/kubernetes]
+type = custom/script
+exec =  ~/bin/kubernetes.sh
+interval = 0.1
 
 [module/i3]
 type = internal/i3
@@ -179,7 +162,7 @@ label-focused-padding = 2
 label-unfocused = %index%
 label-unfocused-padding = 2
 label-unfocused-underline = #fff
-label-unfocused-background = #1E201F
+label-unfocused-background = ${xrdb:background}
 label-visible = %index%
 label-visible-underline = #555555
 label-visible-padding = 2
@@ -187,6 +170,15 @@ label-urgent = %index%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-prefix-foreground = ${xrdb:color6}
+module-margin-left = 2
+format-padding = 2
+format-background = ${xrdb:background}
 
 [module/mpd]
 type = internal/mpd
@@ -209,7 +201,9 @@ bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
 
-[bar/float]
+[bar/bottom]
 inherit = bar/white
-background = #ffffff
-tray-position = center
+bottom = true
+modules-left = i3
+modules-center = 
+modules-right = mpd spotify
