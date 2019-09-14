@@ -14,3 +14,6 @@ cp ~/bin/bat.sh ./bin/
 cp ~/bin/vol.sh ./bin/
 cp ~/bin/kubernetes.sh ./bin/
 cp ~/bin/spotify.py ./bin/
+
+# i3
+cp ~/.config/i3/config ./i3/config
