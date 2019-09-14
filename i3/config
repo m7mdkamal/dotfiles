@@ -285,7 +285,7 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 # exec_always --no-startup-id dunst
 #
 bindsym $mod+shift+x  exec i3lock-fancy -p
-bindsym Print         exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Print         exec scrot -q 100 '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f ~/Pictures/'
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -p'
