@@ -30,11 +30,15 @@ for_window [class="URxvt"] border pixel $thick
 # FLOATING APPLICATIONS
 # for_window [class="URxvt"] floating enable
 
-for_window [class=".*"] title_format "<span font='SF Mono SemiBold 8'> › %title</span>"
+for_window [class=".*"] title_format "<span font='SF Mono SemiBold 8'> %title</span>"
+
+title_align center
 
 # GAP VARIABLES
 set $default_inner 8
 set $default_outer 4
+set $no_inner 0
+set $no_outer 0
 set $inner 32
 set $outer 16
 
@@ -45,6 +49,7 @@ gaps outer $default_outer
 # TOGGLE GAPS
 bindsym $mod+g exec compton; gaps inner all set $inner; gaps outer all set $outer
 bindsym $mod+Ctrl+g exec compton; gaps inner all set $default_inner; gaps outer all set $default_outer
+bindsym $mod+Shift+g exec compton; gaps inner all set $no_inner; gaps outer all set $no_outer
 
 
 # start a terminal
@@ -142,16 +147,16 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace number 1 
-bindsym $mod+2 workspace number 2 
-bindsym $mod+3 workspace number 3 
-bindsym $mod+4 workspace number 4 
-bindsym $mod+5 workspace number 5 
-bindsym $mod+6 workspace number 6 
-bindsym $mod+7 workspace number 7 
-bindsym $mod+8 workspace number 8 
-bindsym $mod+9 workspace number 9 
-bindsym $mod+0 workspace number 10 
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -261,9 +266,9 @@ client.unfocused        #416679 #1E201F #888888 #292d2e   #222222
 client.urgent           #e94f37 #e94f37 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-# for_window [class="Firefox"] border pixel 0
+for_window [class="Firefox"] border pixel 0
 for_window [class=termite] border pixel 0
-# for_window [class="Google-chrome"] border pixel 0
+for_window [class="Google-chrome"] border pixel 0
 
 
 client.background       #ffffff
@@ -282,7 +287,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 2%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
  
 # Notifications with Dunst
-# exec_always --no-startup-id dunst
+exec_always --no-startup-id dunst -config .config/dunst/dunstrc
 #
 bindsym $mod+shift+x  exec i3lock-fancy -p
 bindsym Print         exec scrot -q 100 '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f ~/Pictures/'

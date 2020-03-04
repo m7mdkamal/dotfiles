@@ -19,13 +19,13 @@
 #define base0E #FF2079
 #define base0F #FF5370
 
-#define background_opacity FF
+! #define background_opacity FF
 
-*foreground:   base00
+*foreground:   base05
 #ifdef background_opacity
 *background:   [background_opacity]base05
 #else
-*background:   base05
+*background:   base00
 #endif
 *cursorColor:  base00
 
