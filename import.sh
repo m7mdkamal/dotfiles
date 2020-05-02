@@ -23,11 +23,14 @@ files[~/.config/i3/config]=./i3/config
 # starship
 files[~/.config/starship.toml]=./starship.toml
 
-#compton
+# compton
 files[~/.config/compton/compton.conf]=./compton/compton.conf
+
+# rofi
+files[~/.config/rofi/*/*]=./rofi
 
 for i in "${!files[@]}"
 do
   echo "copying $i"
-  cp $i ${files[$i]}
+  cp -r $i ${files[$i]}
 done
