@@ -10,10 +10,10 @@ meta_artist = os.popen('playerctl -p spotify metadata xesam:artist').read().rstr
 meta_title = os.popen('playerctl -p spotify metadata xesam:title').read().rstrip()
 
 if cmd == "Playing":
-    print(meta_title + ' | ' + meta_artist)
+    print('Playing: ' + meta_title + ' | ' + meta_artist)
 
 elif cmd == 'Paused':
-    print(meta_title + ' | ' + meta_artist)
+    print('Paused: ' + meta_title + ' | ' + meta_artist)
 
 else:
     print('no music playing')

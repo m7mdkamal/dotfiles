@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-fg="$(xrdb -query | grep -w color0 | head -n1 | awk '{print $2}')"
-light="$(xrdb -query | grep -w color8 | head -n1 | awk '{print $2}')"
+fg="$(xrdb -query | grep -w color2 | head -n1 | awk '{print $2}')"
+light="$(xrdb -query | grep -w color7 | head -n1 | awk '{print $2}')"
 
 while getopts idq options
 do

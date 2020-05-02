@@ -121,15 +121,15 @@ scroll-down = ~/bin/vol.sh -d
 type = internal/network
 interface = wlp3s0
 interval = 5
-label-connected = %{F#4A4A4A}wifi%{F#111111} %essid%
-label-disconnected = %{F#4A4A4A}wifi%{F#111111} not connected
+label-connected = %{F#FFFFFF}wifi%{F#13CA91} %essid%
+label-disconnected = %{F#FFFFFF}wifi%{F#13CA91} not connected
 ;format-connected-background = ${xrdb:color4}
 ;format-connected-foreground = ${xrdb:color15}
 
 [module/network]
 type = internal/network
 interface = wlp3s0
-label-connected = %{F#4A4A4A}dwn%{F#111111} %downspeed% %{F#4A4A4A} up %{F#111111}%upspeed%
+label-connected = %{F#FFFFFF}dwn%{F#13CA91} %downspeed% %{F#FFFFFF} up %{F#13CA91}%upspeed%
 
 [module/spotify]
 type = custom/script
@@ -137,6 +137,8 @@ exec =  ~/bin/spotify.py
 exec-if = pgrep spotify > /dev/null
 interval = 0.01
 click-left = playerctl -p spotify play-pause
+double-click-right = playerctl -p spotify previous
+double-click-left = playerctl -p spotify next
 
 [module/kubernetes]
 type = custom/script
@@ -155,7 +157,7 @@ label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #e60053
 label-focused = %index%
-label-focused-foreground = #ffffff
+label-focused-foreground = #000000
 label-focused-background = ${xrdb:color4}
 label-focused-underline = #fba922
 label-focused-padding = 2
@@ -207,3 +209,12 @@ bottom = true
 modules-left = i3
 modules-center = 
 modules-right = mpd spotify
+
+[bar/bottom_big_screen]
+inherit = bar/white
+bottom = true
+modules-left = i3
+modules-center = 
+modules-right = date time kubernetes
+monitor = HDMI-1
+
