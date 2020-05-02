@@ -23,6 +23,9 @@ files[~/.config/i3/config]=./i3/config
 # starship
 files[~/.config/starship.toml]=./starship.toml
 
+#compton
+files[~/.config/compton/compton.conf]=./compton/compton.conf
+
 for i in "${!files[@]}"
 do
   echo "copying $i"
