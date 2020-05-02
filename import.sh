@@ -15,3 +15,6 @@ cp ~/bin/vol.sh ./bin/
 
 # i3
 cp ~/.config/i3/config ./i3/config
+
+# starship
+cp ~/.config/starship.toml  ./starship.toml
