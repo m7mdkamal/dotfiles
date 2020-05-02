@@ -1,20 +1,30 @@
 #!/usr/bin/env bash
 
-cp ~/.Xresources ./.Xresources
+declare -A files
+files[~/.Xresources]=./.Xresources
+
+files[~/.zshrc]=./.zshrc
+files[~/.aliases]=./aliases
 
 # termite
-cp ~/.config/termite/* ./termite
+files[~/.config/termite/*]=./termite
 
 # polybar
-cp ~/.config/polybar/config ./polybar
-cp ~/.config/polybar/launch.sh ./polybar
+files[~/.config/polybar/config]=./polybar
+files[~/.config/polybar/launch.sh]=./polybar
 
 # bin files
-cp ~/bin/bat.sh ./bin/
-cp ~/bin/vol.sh ./bin/
+files[~/bin/bat.sh]=./bin/
+files[~/bin/vol.sh]=./bin/
 
 # i3
-cp ~/.config/i3/config ./i3/config
+files[~/.config/i3/config]=./i3/config
 
 # starship
-cp ~/.config/starship.toml  ./starship.toml
+files[~/.config/starship.toml]=./starship.toml
+
+for i in "${!files[@]}"
+do
+  echo "copying $i"
+  cp $i ${files[$i]}
+done
