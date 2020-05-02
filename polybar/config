@@ -1,10 +1,10 @@
-[bar/white]
+[bar/main]
 ;------------;
 ; DIMENSIONS ;
 ;------------;
 
 width = 100%
-height = 35
+height = 30
 offset-y = 0
 offset-x = 0
 radius = 0.0
@@ -20,7 +20,7 @@ separator =
 ;----------;
 
 bottom = false
-monitor = eDP-1
+monitor = eDP-1-1
 wm-restack = none
 override-redirect = false
 
@@ -53,7 +53,7 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = date time volume battery wlan network kubernetes
+modules-left = date time volume battery wlan network
 modules-center = 
 modules-right = xwindow
 
@@ -119,7 +119,7 @@ scroll-down = ~/bin/vol.sh -d
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp0s20f3
 interval = 5
 label-connected = %{F#FFFFFF}wifi%{F#13CA91} %essid%
 label-disconnected = %{F#FFFFFF}wifi%{F#13CA91} not connected
@@ -128,7 +128,7 @@ label-disconnected = %{F#FFFFFF}wifi%{F#13CA91} not connected
 
 [module/network]
 type = internal/network
-interface = wlp3s0
+interface = wlp0s20f3
 label-connected = %{F#FFFFFF}dwn%{F#13CA91} %downspeed% %{F#FFFFFF} up %{F#13CA91}%upspeed%
 
 [module/spotify]
@@ -204,17 +204,16 @@ bar-progress-fill = ─
 bar-progress-empty = ─
 
 [bar/bottom]
-inherit = bar/white
+inherit = bar/main
 bottom = true
 modules-left = i3
 modules-center = 
-modules-right = mpd spotify
+modules-right = network wlan volume battery date time
+
+
 
 [bar/bottom_big_screen]
-inherit = bar/white
+inherit = bar/bottom
+monitor = HDMI-0
 bottom = true
-modules-left = i3
-modules-center = 
-modules-right = date time kubernetes
-monitor = HDMI-1
 

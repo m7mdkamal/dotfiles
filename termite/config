@@ -1,9 +1,6 @@
-## Termite Styling Program
-## Author : Aditya Shakya
-
 [options]
 
-allow_bold = false 
+allow_bold = false
 audible_bell = true
 browser = xdg-open
 clickable_url = true
@@ -26,24 +23,51 @@ urgent_on_bell = true
 highlight = #30343e
 
 [colors]
+# Base16 IR Black
+# Author: Timothée Poisot (http://timotheepoisot.fr)
 
-foreground=#FFFFFF
-background=#111111
-cursor=#FFFFFF
+foreground          = #b5b3aa
+foreground_bold     = #d9d7cc
+cursor              = #d9d7cc
+cursor_foreground   = #000000
+background          = rgba(0, 0, 0)
 
-color0=#1d2021
-color1=#383c3e
-color2=#53585b
-color3=#6f7579
-color4=#cdcdcd
-color5=#d5d5d5
-color6=#dddddd
-color7=#e5e5e5
-color8=#d72638
-color9=#eb8413
-color10=#f19d1a
-color11=#88b92d
-color12=#1ba595
-color13=#1e8bac
-color14=#be4264
-color15=#c85e0d
+# 16 color space
+
+# Black, Gray, Silver, White
+color0  = #000000
+color8  = #6c6c66
+color7  = #b5b3aa
+color15 = #fdfbee
+
+# Red
+color1  = #ff6c60
+color9  = #ff6c60
+
+# Green
+color2  = #a8ff60
+color10 = #a8ff60
+
+# Yellow
+color3  = #ffffb6
+color11 = #ffffb6
+
+# Blue
+color4  = #96cbfe
+color12 = #96cbfe
+
+# Purple
+color5  = #ff73fd
+color13 = #ff73fd
+
+# Teal
+color6  = #c6c5fe
+color14 = #c6c5fe
+
+# Extra colors
+color16 = #e9c062
+color17 = #b18a3d
+color18 = #242422
+color19 = #484844
+color20 = #918f88
+color21 = #d9d7cc

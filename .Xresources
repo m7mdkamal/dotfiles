@@ -18,6 +18,7 @@
 #define base0D #7898FB
 #define base0E #FF2079
 #define base0F #FF5370
+#define red #e02d37
 
 ! #define background_opacity FF
 

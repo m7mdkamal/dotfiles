@@ -1,76 +1,26 @@
-
 set $mod Mod4
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:clean 8
-
-set $bg-color 	         #536a71
-set $inactive-bg-color   #2f343f
-set $text-color          #f6f7eb
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Font
+font pango:clean 8
 
-# RESIZE VARIABLES
-set $center move absolute position center
-
-# DEFAULT BORDER
-set $border_size 4
-for_window [class="^.*"] border pixel $border_size
-for_window [title="^.*"] border pixel $border_size
-
-# APPLICATION BORDERS
-set $thick 4  
-for_window [class="URxvt"] border pixel $thick
-
-# FLOATING APPLICATIONS
-# for_window [class="URxvt"] floating enable
-
+# Window Title 
 for_window [class=".*"] title_format "<span font='SF Mono SemiBold 8'> %title</span>"
-
 title_align center
-
-# GAP VARIABLES
-set $default_inner 8
-set $default_outer 4
-set $no_inner 0
-set $no_outer 0
-set $inner 32
-set $outer 16
-
-# SET GAPS
-gaps inner $default_inner
-gaps outer $default_outer
-
-# TOGGLE GAPS
-bindsym $mod+g exec compton; gaps inner all set $inner; gaps outer all set $outer
-bindsym $mod+Ctrl+g exec compton; gaps inner all set $default_inner; gaps outer all set $default_outer
-bindsym $mod+Shift+g exec compton; gaps inner all set $no_inner; gaps outer all set $no_outer
-
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-# bindsym $mod+Return exec urxvt
 bindsym $mod+Return exec --no-startup-id termite --class=termite -e '/usr/bin/zsh -l'
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+# start Rofi (a program launcher)
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+shift+p exec ~/.config/rofi/power.sh
-bindsym $mod+shift+w exec ~/.config/rofi/wifi.sh
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -103,7 +53,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle; $center
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -113,62 +63,35 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-# workspace 1 output eDP-1 
-# workspace 2 output eDP-1 
-# workspace 3 output eDP-1 
-# workspace 4 output eDP-1 
-# workspace 5 output eDP-1 
-# workspace 6 output eDP-1 
-# workspace 7 output eDP-1 
-# workspace 8 output HDMI-1
-# workspace 9 output HDMI-1
-# workspace 10 output HDMI-1
-
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Down move workspace to output down
@@ -201,7 +124,7 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -209,95 +132,70 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#     # i3bar_command i3bar
-#     status_command i3blocks
-#     tray_output             primary
-#     separator_symbol        "·"
-#     workspace_buttons       yes
-#     strip_workspace_numbers yes
-
-
-#   # status_command i3status
-#   # status_command i3status --config ~/.config/i3/i3status.conf 
-#   #  position top
- 
-# ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-# #   tray_output primary
-# #   tray_output eDP1
- 
-#     bindsym button4 nop
-#     bindsym button5 nop
-#     font xft:DejaVuSansLight 8
-#     # font pango:Source Sans Pro 8
-#     # font xft:clean 8 
-#     # font pango:bitocra13 8
-#     colors {
-#         background  $bg-color
-#         statusline  $text-color
-#         separator   $text-color
-  
-#         # class             border  backgr. text
-#         focused_workspace   #2b83a6 #2b83a6 #ffffff
-#         active_workspace    $bg-color $bg-color #ffffff
-#         inactive_workspace  $bg-color $bg-color #86888c
-#         urgent_workspace    #d64e4e #d64e4e #ffffff
-#         binding_mode        #229c56 #229c56 #ffffff
-#     }
-# }
-
-
 # shortcut to change window border
 bindsym $mod+t border normal    0
 bindsym $mod+y border pixel     1
 bindsym $mod+u border none
 
-# Wallpaper
-exec_always --no-startup-id feh --bg-tile ~/Pictures/Wallpapers/dot-grid.png
- 
-# smart_gaps on 
- 
-# class                 border  backgr. text    indicator child_border
-client.focused          #416679 #416679 #f6f7eb #416679   #000000
-client.focused_inactive #416679 #1E201F #f6f7eb #484e50   #5f676a
-client.unfocused        #416679 #1E201F #888888 #292d2e   #222222
-client.urgent           #e94f37 #e94f37 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 for_window [class="Firefox"] border pixel 0
 for_window [class=termite] border pixel 0
 for_window [class="Google-chrome"] border pixel 0
 
-
-client.background       #ffffff
-# Font
-# font xft:Tamsyn 8
-
-# Auto Internet
-# exec_always --no-startup-id wicd-gtk -t
- 
 # Composite Manager (for Transparency)
 exec_always --no-startup-id compton --config ~/.config/compton/compton.conf 
- 
-# Audio Keys (for Audio Management)
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 2%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 2%-
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
- 
-# Notifications with Dunst
-exec_always --no-startup-id dunst -config .config/dunst/dunstrc
-#
-bindsym $mod+shift+x  exec i3lock-fancy -p
+
 bindsym Print         exec scrot -q 100 '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f ~/Pictures/'
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
-exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -p'
 
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
+
+# wallpaper
+exec_always --no-startup-id feh --bg-fill wallpaper.jpg
+
+# Toggle language
 bindsym $mod+space exec (setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap ar || setxkbmap us 
 
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 
 # network applet
 exec --no-startup-id nm-applet
+
+
+# GAP VARIABLES
+set $default_inner 8
+set $default_outer 4
+set $no_inner 0
+set $no_outer 0
+set $inner 32
+set $outer 16
+
+# SET GAPS
+gaps inner $default_inner
+gaps outer $default_outer
+
+# TOGGLE GAPS
+bindsym $mod+g exec compton; gaps inner all set $inner; gaps outer all set $outer
+bindsym $mod+Ctrl+g exec compton; gaps inner all set $default_inner; gaps outer all set $default_outer
+bindsym $mod+Shift+g exec compton; gaps inner all set $no_inner; gaps outer all set $no_outer
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #B71C1C #B71C1C #f6f7eb #B71C1C   #000000
+client.focused_inactive #D32F2F #1E201F #f6f7eb #484e50   #5f676a
+client.unfocused        #000000 #1E201F #ffffff #292d2e   #222222
+client.urgent           #e94f37 #e94f37 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# Multimedia 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 15
+bindsym XF86MonBrightnessDown exec xbacklight -dec 15 
+bindsym XF86AudioRaiseVolume exec "amixer -Mq set Master,0 5%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -Mq set Master,0 5%- unmute"
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+
+# Rofi Menus
+bindsym $mod+p exec --no-startup-id bash ~/.config/rofi/scripts/menu_powermenu.sh
+bindsym $mod+n exec --no-startup-id bash ~/.config/rofi/scripts/menu_network.sh
+bindsym $mod+o exec --no-startup-id bash ~/.config/rofi/scripts/vscode.sh
