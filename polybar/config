@@ -8,12 +8,13 @@ height = 30
 offset-y = 0
 offset-x = 0
 radius = 0.0
+line-size = 3
 
 border-top-size = 0
 border-bottom-size = 0
 border-right-size = 0
 border-left-size = 0
-separator =
+separator = %{F#e60053}//%{F-}
 
 ;----------;
 ; LOCATION ;
@@ -21,7 +22,7 @@ separator =
 
 bottom = false
 monitor = eDP-1-1
-wm-restack = none
+wm-restack = i3
 override-redirect = false
 
 
@@ -39,8 +40,8 @@ font-3 = "Font Awesome 5 Brands:pixelsize=8;2"
 ; COLORS ;
 ;--------;
 
-background = ${xrdb:background}
-foreground = ${xrdb:foreground}
+background = ${xrdb:polybarBackground}
+foreground = ${xrdb:polybarForeground}
 border-color = 0
 
 ;---------------;
@@ -54,7 +55,7 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = date time volume battery wlan network
-modules-center = 
+modules-center =
 modules-right = xwindow
 
 tray-position = right
@@ -121,15 +122,15 @@ scroll-down = ~/bin/vol.sh -d
 type = internal/network
 interface = wlp0s20f3
 interval = 5
-label-connected = %{F#FFFFFF}wifi%{F#13CA91} %essid%
-label-disconnected = %{F#FFFFFF}wifi%{F#13CA91} not connected
+label-connected = %{F${xrdb:polybarKey}wifi%{F${xrdb:polybarValue} %essid%
+label-disconnected = %{F${xrdb:polybarKey}wifi%{F${xrdb:polybarValue} not connected
 ;format-connected-background = ${xrdb:color4}
 ;format-connected-foreground = ${xrdb:color15}
 
 [module/network]
 type = internal/network
 interface = wlp0s20f3
-label-connected = %{F#FFFFFF}dwn%{F#13CA91} %downspeed% %{F#FFFFFF} up %{F#13CA91}%upspeed%
+label-connected = %{F${xrdb:polybarKey}dwn%{F#{xrdb:polybarValue} %downspeed% %{F${xrdb:polybarKey} up %{F${xrdb:polybarValue}%upspeed%
 
 [module/spotify]
 type = custom/script
@@ -156,15 +157,17 @@ format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #e60053
+
 label-focused = %index%
 label-focused-foreground = #000000
-label-focused-background = ${xrdb:color4}
-label-focused-underline = #fba922
+label-focused-background = ${xrdb:polybarBackground}
+label-focused-underline = #e60053
 label-focused-padding = 2
+
 label-unfocused = %index%
 label-unfocused-padding = 2
 label-unfocused-underline = #fff
-label-unfocused-background = ${xrdb:background}
+label-unfocused-background = ${xrdb:polybarBackground}
 label-visible = %index%
 label-visible-underline = #555555
 label-visible-padding = 2
@@ -180,7 +183,7 @@ label = %title:0:30:...%
 format-prefix-foreground = ${xrdb:color6}
 module-margin-left = 2
 format-padding = 2
-format-background = ${xrdb:background}
+format-background = ${xrdb:polybarBackground}
 
 [module/mpd]
 type = internal/mpd
@@ -203,17 +206,18 @@ bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
 
+[module/seperator]
+type = custom/text
+content = //
+
 [bar/bottom]
 inherit = bar/main
 bottom = true
 modules-left = i3
-modules-center = 
+modules-center =
 modules-right = network wlan volume battery date time
-
-
 
 [bar/bottom_big_screen]
 inherit = bar/bottom
 monitor = HDMI-0
 bottom = true
-
