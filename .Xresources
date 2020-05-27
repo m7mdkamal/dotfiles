@@ -20,7 +20,7 @@
 #define base0F #FF5370
 #define red #e02d37
 
-! #define background_opacity FF
+#define background_opacity FF
 
 *foreground:   base05
 #ifdef background_opacity
@@ -47,6 +47,13 @@
 *color13:      base06
 *color14:      base0F
 *color15:      base07
+
+! === polybar ===
+*polybarBackground: #background
+*polybarForeground: base00
+*polybarKey: base00
+*polybarValue: base00
+
 
 ! === rofi ===
 

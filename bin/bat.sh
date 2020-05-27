@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-fg="$(xrdb -query | grep -w color2 | head -n1 | awk '{print $2}')"
-light="$(xrdb -query | grep -w color7 | head -n1 | awk '{print $2}')"
+valueColor="$(xrdb -query | grep -w polybarValue | head -n1 | awk '{print $2}')"
+keyColor="$(xrdb -query | grep -w polybarKey | head -n1 | awk '{print $2}')"
 
 cap=$(cat /sys/class/power_supply/BAT0/capacity)
 status=$(cat /sys/class/power_supply/BAT0/status)
 
 if [[ "$status" = "Charging" ]]
 then
-	echo -ne "%{F$light}+bat %{F$fg}$cap%"
+	echo -ne "%{F$keyColor}+bat %{F$valueColor}$cap%"
 else
-	echo -ne "%{F$light}bat %{F$fg}$cap%"
+	echo -ne "%{F$keyColor}bat %{F$valueColor}$cap%"
 fi
