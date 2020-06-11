@@ -107,3 +107,5 @@ export PATH="${PATH}:${HOME}/.local/bin"
 # Aliases file
 source "$HOME/.aliases"
 source "$HOME/.kube_aliases"
+source "$HOME/.swvl/.aliases"
+
