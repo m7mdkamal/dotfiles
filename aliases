@@ -1,6 +1,11 @@
-# General
+#---------------#
+#    General    #
+#---------------#
 alias q="exit"
 
+# copy past
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 #-------------------#
 #   Kubectl alias   #
