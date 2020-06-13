@@ -29,6 +29,9 @@ files[~/.config/compton/compton.conf]=./compton/compton.conf
 # rofi
 files[~/.config/rofi/*/*]=./rofi
 
+# nvim 
+files[~/.config/nvim/*]=./nvim
+
 for i in "${!files[@]}"
 do
   echo "copying $i"
