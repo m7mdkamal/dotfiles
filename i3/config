@@ -208,8 +208,8 @@ bindsym $mod+Shift+g exec compton; gaps inner all set $no_inner; gaps outer all 
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #B71C1C #B71C1C #f6f7eb #B71C1C   #000000
-client.focused_inactive #D32F2F #1E201F #f6f7eb #484e50   #5f676a
-client.unfocused        #000000 #1E201F #ffffff #292d2e   #222222
+client.focused_inactive #D32F2F #151515 #f6f7eb #484e50   #5f676a
+client.unfocused        #000000 #151515 #ffffff #292d2e   #222222
 client.urgent           #e94f37 #e94f37 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
