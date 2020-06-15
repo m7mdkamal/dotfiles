@@ -14,8 +14,8 @@ configuration {
   lines:              6;
   columns:            1;
   font:               "SF Mono SemiBold 12";
-  color-normal:       "#353944,  #FFFFFF,  #353944,  #B71C1C,  #FFFFFF";
-  color-window:       "#353944,      #404552";
+  color-normal:       "#212121,  #FFFFFF,  #212121,  #ef5350,  #272727";
+  color-window:       "#212121,      #272727";
   bw:                 4;
   location:           0;
   padding:            0;

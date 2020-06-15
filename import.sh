@@ -27,7 +27,7 @@ files[~/.config/starship.toml]=./starship.toml
 files[~/.config/compton/compton.conf]=./compton/compton.conf
 
 # rofi
-files[~/.config/rofi/*/*]=./rofi
+files[~/.config/rofi/*]=./rofi
 
 # nvim 
 files[~/.config/nvim/*]=./nvim
