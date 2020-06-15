@@ -224,3 +224,4 @@ bindsym XF86AudioMute exec amixer -D pulse set Master toggle
 bindsym $mod+p exec --no-startup-id bash ~/.config/rofi/scripts/menu_powermenu.sh
 bindsym $mod+n exec --no-startup-id bash ~/.config/rofi/scripts/menu_network.sh
 bindsym $mod+Shift+o exec --no-startup-id bash ~/.config/rofi/scripts/vscode.sh
+bindsym $mod+Shift+m exec --no-startup-id ruby ~/.config/rofi/scripts/monitor.rb
