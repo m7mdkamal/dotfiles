@@ -4,8 +4,8 @@
 alias q="exit"
 
 # copy past
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+alias copy='xsel --clipboard --input'
+alias paste='xsel --clipboard --output'
 
 #-------------------#
 #   Kubectl alias   #
@@ -24,6 +24,7 @@ alias rcs="kubectl get rc"
 alias svcs="kubectl get services"
 
 alias dep="kubectl get deployment"
+alias deps="kubectl get deployment"
 alias deploys="kubectl get deployment"
 
 alias nodes="kubectl get nodes"
@@ -43,6 +44,21 @@ alias igs="kubectl get ingress"
 alias contexts="kubectl config get-contexts"
 alias ktop="kubectl top nodes"
 
+kpods() {
+  pods | \
+    fzf \
+      --reverse \
+      --bind 'ctrl-y:execute(echo {} | head -n1  | cut -d " " -f1 | xsel --clipboard --input)+abort' \
+      --bind 'ctrl-l:execute(echo {} | head -n1  | cut -d " " -f1 | xargs kubectl -f logs)+abort'
+}
+
+kdeps() {
+  deploys | \
+    fzf \
+      --reverse \
+      --bind 'ctrl-y:execute(echo {} | head -n1  | cut -d " " -f1 | xsel --clipboard --input)+abort' \
+      --bind 'ctrl-e:execute(echo {} | head -n1  | cut -d " " -f1 | KUBE_EDITOR=nvim xargs kubectl edit deployment)+abort'
+}
 #-------------------#
 #   Docker alias    #
 #-------------------#
